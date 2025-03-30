@@ -233,7 +233,7 @@ def write_stats_file(filename, solution, visited, processed, max_depth, time_ela
 
 def main():
     if len(sys.argv) != 6:
-        print("Usage: python solver.py <strategy> <param> <input_file> <solution_file> <stats_file>")
+        print("Usage: python main.py <strategy> <param> <input_file> <solution_file> <stats_file>")
         sys.exit(1)
 
     strategy = sys.argv[1]
