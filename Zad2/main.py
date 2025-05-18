@@ -6,12 +6,13 @@ import glob
 import matplotlib.pyplot as plt
 
 def load_data(directory_path, file_type):
-    print("Reading data...")
     all_data = []
     if file_type == 'stat':
+        print(f"Wczytywanie danych statycznych z: {directory_path}...")
         file_pattern = os.path.join(directory_path, '*_stat_*.xlsx')
         files = glob.glob(file_pattern)
     elif file_type == 'dynamic':
+        print(f"Wczytywanie danych dynamicznych z: {directory_path}...")
         all_xlsx_files = glob.glob(os.path.join(directory_path, '*.xlsx'))
         files = [f for f in all_xlsx_files if '_stat_' not in os.path.basename(f) and '_random_' not in os.path.basename(f)]
     else:
@@ -62,7 +63,7 @@ y_train = training_data[['reference__x', 'reference__y']].values
 
 model = tf.keras.Sequential([
     tf.keras.layers.Input(shape=(2,)), # Warstwa wejsciowa (x,y)
-    tf.keras.layers.Dense(128, activation='relu'),
+    tf.keras.layers.Dense(64, activation='relu'),
     tf.keras.layers.Dense(64, activation='relu'),
     tf.keras.layers.Dense(2) #Warstwa danych wyjsciowych (x, y)
 ])
